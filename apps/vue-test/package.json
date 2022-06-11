@@ -1,0 +1,35 @@
+{
+  "name": "@foo-bar-project/vue-test",
+  "version": "1.0.0",
+  "dependencies": {
+    "vue": "3.2.36",
+    "vue-router": "^4.0.15",
+    "graphql": "16.3.0",
+    "@headlessui/vue": "^1.6.4",
+    "@headlessui/tailwindcss": "^0.1.0"
+  },
+  "scripts": {
+    "build:spa": "vite build --outDir dist/spa",
+    "dev:spa": "vite --host",
+    "generate-pwa-icons": "npx pwa-asset-generator public/favicon.svg public/images/pwa --manifest resource/manifest.json --path-override /images/pwa"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.1.2",
+    "postcss": "^8.4.14",
+    "autoprefixer": "^10.4.7",
+    "dotenv": "^16.0.1",
+    "unplugin-vue-components": "^0.19.6",
+    "markdown-it-link-attributes": "4.0.0",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
+    "markdown-it-prism": "2.2.4",
+    "typescript": "4.6.2",
+    "unplugin-auto-import": "0.8.5",
+    "unplugin-icons": "0.14.3",
+    "vite-tsconfig-paths": "^3.5.0",
+    "vite": "2.9.9",
+    "vite-plugin-imp": "2.1.8",
+    "vite-plugin-md": "0.13.1",
+    "vite-plugin-pwa": "0.12.0"
+  }
+}

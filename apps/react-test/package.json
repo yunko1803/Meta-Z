@@ -1,0 +1,36 @@
+{
+  "name": "@foo-bar-project/react-test",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-router-dom": "6.3.0",
+    "@foo-bar-project/react-hooks": "workspace:*",
+    "graphql": "16.3.0",
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "framer-motion": "^6.3.11"
+  },
+  "scripts": {
+    "build:spa": "vite build --outDir dist/spa",
+    "dev:spa": "vite --host",
+    "generate-pwa-icons": "npx pwa-asset-generator public/favicon.svg public/images/pwa --manifest resource/manifest.json --path-override /images/pwa"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "markdown-it-link-attributes": "4.0.0",
+    "@vitejs/plugin-react": "^1.3.2",
+    "markdown-it-prism": "2.2.3",
+    "typescript": "4.6.2",
+    "unplugin-auto-import": "0.8.5",
+    "unplugin-icons": "0.14.3",
+    "vite-tsconfig-paths": "^3.5.0",
+    "vite": "2.9.9",
+    "vite-plugin-imp": "2.1.8",
+    "vite-plugin-md": "0.13.1",
+    "vite-plugin-pwa": "0.12.0"
+  }
+}

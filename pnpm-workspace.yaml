@@ -1,0 +1,4 @@
+pacakges:
+  - 'packages/**'
+  - 'apps/**'
+  - 'entities/**'
