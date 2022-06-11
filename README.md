@@ -47,9 +47,9 @@ pnpm install
 
 ### 저장소 설명
 
-- ./apps/nest-api : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요
-- ./apps/express : express 로 테스트를 수행하려면 이 폴더를 사용 하세요
-- ./apps/type-graphql : type-graphql 로 테스트를 수행하려 이 폴더를 사용하세요
+- ./apps/nest-test : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요
+- ./apps/express-test : express 로 테스트를 수행하려면 이 폴더를 사용 하세요
+- ./apps/type-graphql-test : type-graphql 로 테스트를 수행하려 이 폴더를 사용하세요
 
 각 폴더 리드미에서 추가 실행 방법을 확인하세요
 

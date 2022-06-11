@@ -1,5 +1,5 @@
 {
-  "name": "@foo-bar-project/express-api",
+  "name": "@foo-bar-project/express-test",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",

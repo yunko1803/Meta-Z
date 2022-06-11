@@ -1,5 +1,5 @@
 {
-  "name": "@foo-bar-project/nest-api",
+  "name": "@foo-bar-project/nest-test",
   "version": "1.0.0",
   "dependencies": {
     "@nestjs/core": "^8.4.5",
