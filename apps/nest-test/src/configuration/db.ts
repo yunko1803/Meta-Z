@@ -5,7 +5,7 @@ export const db = () => ({
    * 데이터베이스 이름 입니다
    * DB_DATABASE: for Build Time Env
    */
-  dbDatabase: process.env.DB_DATABASE ?? 'penet_checker',
+  dbDatabase: process.env.DB_DATABASE ?? 'express-test',
 
   /**
    * DB 인스턴스의 호스트 이름입니다

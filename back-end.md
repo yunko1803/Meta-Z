@@ -2,8 +2,14 @@
 
 ### 저장소 설명
 
-- ./apps/nest-test : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요
+- ./apps/nest-test : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요 
+  - dev script `pnpm run --filter @foo-bar-project/nest-test dev`
+  - build script `pnpm run --filter @foo-bar-project/nest-test build`
+  - start script `pnpm run --filter @foo-bar-project/nest-test start`
 - ./apps/express-test : express 로 테스트를 수행하려면 이 폴더를 사용 하세요
+  - dev script `pnpm run --filter @foo-bar-project/express-test dev`
+  - build script `pnpm run --filter @foo-bar-project/express-test build`
+  - start script `pnpm run --filter @foo-bar-project/express-test start`
 
 각 폴더 리드미에서 추가 실행 방법을 확인하세요
 
@@ -23,14 +29,9 @@
 unit 테스트를 한다면 더욱 좋습니다
 
 
-- nestjs 로 만들 경우
+- e2e and unit test
 ```shell
-pnpm run test:nest
-```
-
-- express 로 만들 경우
-```shell
-pnpm run test:express
+pnpm run test
 ```
 
 << [README.md](README.md)
