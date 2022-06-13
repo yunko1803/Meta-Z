@@ -10,7 +10,7 @@ jest.mock('src/typeorm-module', () => {
     typeormModule: TypeOrmModule.forRoot({
       database: ':memory:',
       entities: Object.values(entities),
-      logging: true,
+      logging: false,
       synchronize: true,
       type: 'sqlite',
     }),
