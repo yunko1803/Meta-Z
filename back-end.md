@@ -11,7 +11,6 @@
   - build script `pnpm run --filter @foo-bar-project/express-test build`
   - start script `pnpm run --filter @foo-bar-project/express-test start`
 
-각 폴더 리드미에서 추가 실행 방법을 확인하세요
 
 ### 문제 내용
 
