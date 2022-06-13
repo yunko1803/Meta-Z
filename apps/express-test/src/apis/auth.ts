@@ -1,9 +1,13 @@
 import {Router} from 'express'
 import {ContextRoute} from 'src/Context'
 import {User} from 'src/entities'
+import {Repository} from 'typeorm/repository/Repository'
 
-export const auth: ContextRoute = (context) => {
-  const userRepository = context.dataSource.getRepository(User)
+export interface AuthProps {
+  userRepository: Repository<User>
+}
+
+export const auth: ContextRoute<AuthProps> = ({userRepository}) => {
   const auth = Router()
 
   auth.get('/count', async (_, res) => {

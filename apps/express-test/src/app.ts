@@ -4,21 +4,10 @@ import {Context} from 'src/Context'
 import {root, auth} from './apis'
 import {DataSource} from 'typeorm'
 import {config} from './config'
-import * as entities from './entities'
+import {User} from './entities'
 
-export const createApp = () => {
+export const createApp = async (dataSource: DataSource) => {
   const app = express()
-
-  const dataSource = new DataSource({
-    type: 'mysql',
-    host: config.db.host,
-    port: 3306,
-    username: config.db.username,
-    password: config.db.password,
-    database: config.db.database,
-    entities: [entities.User],
-    synchronize: config.db.synchronize,
-  })
 
   const context: Context = {
     config,
@@ -27,11 +16,8 @@ export const createApp = () => {
 
   app.use(express.json())
   app.use('/', root(context))
-  app.use('/auth', auth(context))
+  app.use('/auth', auth({userRepository: context.dataSource.getRepository(User)}))
 
-  return {
-    app,
-    dataSource,
-  }
+  return app
 }
 

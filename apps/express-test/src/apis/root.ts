@@ -1,7 +1,11 @@
 import {Router} from 'express'
 import {ContextRoute} from 'src/Context'
 
-export const root: ContextRoute = () => {
+export interface RootProps {
+  //
+}
+
+export const root: ContextRoute<RootProps> = () => {
   const root = Router()
 
   root.get('/', (_, res) => {

@@ -7,4 +7,4 @@ export interface Context {
   dataSource: DataSource
 }
 
-export type ContextRoute = (context: Context) => Router
+export type ContextRoute<Props> = (context: Props) => Router
