@@ -2,7 +2,7 @@ import {Router} from 'express'
 import {ContextRoute} from 'src/Context'
 
 export interface RootProps {
-  //
+  _empty?: never
 }
 
 export const root: ContextRoute<RootProps> = () => {
@@ -20,4 +20,3 @@ export const root: ContextRoute<RootProps> = () => {
 
   return root
 }
-

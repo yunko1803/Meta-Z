@@ -11,11 +11,16 @@ pnpm install
 
 각 모노레포 실행 방법은 Pnpm https://pnpm.io/ko/filtering#--filter-package_name 참조
 
+## 문제 공통 사항
+
+- eslint 를 지키세요
+- type 오류가 없야 합니다
+
 ## 프론트 문제 (WIP)
 
 Go To [/front-end.md](front-end.md)
 
-## 백엔드 문제 (WIP)
+## 백엔드 문제
 
 Go To [/back-end.md](back-end.md)
 

@@ -7,11 +7,11 @@ const {freeze} = Object
 
 export const config = freeze({
   db: freeze({
-    host : process.env.DB_HOST,
-    username: process.env.DB_USERNAME ?? 'root',
-    password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE ?? 'main',
-    synchronize: process.env.NODE_ENV !== 'production'
+    host: process.env.DB_HOST,
+    password: process.env.DB_PASSWORD,
+    synchronize: process.env.NODE_ENV !== 'production',
+    username: process.env.DB_USERNAME ?? 'root',
   }),
   port: process.env.PORT,
 })

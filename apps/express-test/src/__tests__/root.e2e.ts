@@ -12,9 +12,6 @@ describe('root routes', () => {
   })
 
   it('should request /count (GET)', () => {
-    return request(app)
-      .get('/')
-      .expect(200)
-      .expect('ok')
+    return request(app).get('/').expect(200).expect('ok')
   })
 })

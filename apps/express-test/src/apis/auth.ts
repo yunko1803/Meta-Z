@@ -23,6 +23,9 @@ export const auth: ContextRoute<AuthProps> = ({userRepository}) => {
     res.send('ok')
   })
 
+  auth.patch('/update-name', (_, res) => {
+    res.send('ok')
+  })
+
   return auth
 }
-
