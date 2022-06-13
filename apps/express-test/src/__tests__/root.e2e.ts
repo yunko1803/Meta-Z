@@ -11,7 +11,7 @@ describe('root routes', () => {
     app.use('/', root({}))
   })
 
-  it('should request / (GET)', () => {
+  it('should request /count (GET)', () => {
     return request(app)
       .get('/')
       .expect(200)
