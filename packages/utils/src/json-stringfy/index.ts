@@ -5,7 +5,10 @@ const {stringify} = JSON
  * @param data
  * @param defaultValue
  */
-export const jsonStringify = (data: Record<string, any>, defaultValue: string = ''): string => {
+export const jsonStringify = (
+  data: Record<string, any>,
+  defaultValue: string = '',
+): string => {
   try {
     return stringify(data)
   } catch {

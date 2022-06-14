@@ -1,7 +1,3 @@
 export const Profile: FC = () => {
-  return (
-    <>
-      profile
-    </>
-  )
+  return <>profile</>
 }

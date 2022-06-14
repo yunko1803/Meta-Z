@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, useRoutes} from 'react-router-dom'
 import {routes} from 'src/routes'
-import { ChakraProvider } from '@chakra-ui/react'
+import {ChakraProvider} from '@chakra-ui/react'
 
 const Routes = () => {
   return useRoutes(routes)

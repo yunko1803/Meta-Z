@@ -1,12 +1,13 @@
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import {ConfigEnv, UserConfig} from 'vite'
-export type UserConfigFn = (env: ConfigEnv) => UserConfig
 import tsconfigPaths from 'vite-tsconfig-paths'
 
+export type UserConfigFn = (env: ConfigEnv) => UserConfig
 export const sharedConfig: UserConfigFn = (): UserConfig => {
   return {
     define: {
+      // eslint-disable-next-line prettier/prettier
       __DEV__: '(process.env.NODE_ENV !== \'production\')',
     },
     optimizeDeps: {
@@ -14,10 +15,7 @@ export const sharedConfig: UserConfigFn = (): UserConfig => {
       include: [],
     },
 
-    plugins: [
-      tsconfigPaths(),
-      react(),
-    ],
+    plugins: [react(), tsconfigPaths()],
 
     resolve: {
       alias: {

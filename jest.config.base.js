@@ -40,8 +40,7 @@ module.exports = {
     },
   ],
 
-  snapshotSerializers: [
-  ],
+  snapshotSerializers: [],
 
   testEnvironment: '@happy-dom/jest-environment',
 

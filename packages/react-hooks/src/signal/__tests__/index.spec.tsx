@@ -8,9 +8,7 @@ describe('signal', () => {
     const Component = () => {
       const onSignal = useSignal()
       rendered()
-      return (
-        <button onClick={onSignal}>signal</button>
-      )
+      return <button onClick={onSignal}>signal</button>
     }
 
     await render(<Component />)

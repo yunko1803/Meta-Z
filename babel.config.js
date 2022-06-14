@@ -10,7 +10,7 @@ module.exports = {
             legacy: true,
           },
         ],
-        ['@babel/plugin-proposal-class-properties', { loose : true }],
+        ['@babel/plugin-proposal-class-properties', {loose: true}],
         [
           'module-resolver',
           {
@@ -23,10 +23,12 @@ module.exports = {
         ],
       ],
       presets: [
-
-        ['@babel/preset-react', {
-          isTSX: true,
-        }],
+        [
+          '@babel/preset-react',
+          {
+            isTSX: true,
+          },
+        ],
         [
           '@babel/preset-env',
           {
@@ -37,7 +39,8 @@ module.exports = {
           },
         ],
         [
-          '@babel/preset-typescript', {
+          '@babel/preset-typescript',
+          {
             allExtensions: true,
             isTSX: true,
           },

@@ -4,10 +4,7 @@ import {Root} from './Root'
 const container = document.querySelector('#app')
 if (container) {
   const root = createRoot(container)
-  root.render(
-    <Root />,
-  )
+  root.render(<Root />)
 } else {
   console.error('there is no container element')
 }
-

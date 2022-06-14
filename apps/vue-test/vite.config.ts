@@ -12,10 +12,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import manifest from './resource/manifest.json'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import components from 'unplugin-vue-components/vite'
-import {
-  HeadlessUiResolver,
-} from 'unplugin-vue-components/resolvers'
-
+import {HeadlessUiResolver} from 'unplugin-vue-components/resolvers'
 
 // eslint-disable-next-line import/no-named-as-default-member
 dotenv.config()
@@ -35,25 +32,18 @@ export default defineConfig(() => {
       'process.env.NODE_ENV': JSON.stringify('import.meta.env.MODE'),
     },
     optimizeDeps: {
-      exclude: [
-        'vite',
-      ],
-      include: [
-        'vue',
-        'vue-router',
-      ],
+      exclude: ['vite'],
+      include: ['vue', 'vue-router'],
     },
 
     plugins: [
       vue(),
       autoImport({
-        imports: [
-          'vue',
-        ],
+        imports: ['vue'],
       }),
       vueJsx(),
       components({
-        resolvers: [HeadlessUiResolver()]
+        resolvers: [HeadlessUiResolver()],
       }),
       tsconfigPaths(),
       vitePluginImp(),

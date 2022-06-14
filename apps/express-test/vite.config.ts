@@ -3,6 +3,13 @@ import {VitePluginNode} from 'vite-plugin-node'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  optimizeDeps: {
+    // Vite does not work well with optionnal dependencies,
+    // mark them as ignored for now
+    include: [
+      // 'reflect-metadata',
+    ],
+  },
   plugins: [
     /**
      * 바이트로 Nodejs 를 서비스 할 수 있는 플러그인 입니다
@@ -20,13 +27,6 @@ export default defineConfig({
      */
     tsconfigPaths(),
   ],
-  optimizeDeps: {
-    // Vite does not work well with optionnal dependencies,
-    // mark them as ignored for now
-    include: [
-      // 'reflect-metadata',
-    ],
-  },
   server: {
     port: 8080,
   },

@@ -7,6 +7,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     '@vue/typescript/recommended',
+    'prettier',
   ],
   globals: {
     __QUASAR_SSR__: true,
@@ -134,6 +135,7 @@ module.exports = {
     'array-bracket-newline': ['error', 'consistent'],
     'array-bracket-spacing': ['error', 'never'],
     'array-callback-return': 'error',
+    'arrow-body-style': 'off',
     'arrow-parens': ['error', 'always'],
     'arrow-spacing': [
       'error',
@@ -247,6 +249,7 @@ module.exports = {
         ignoreUrls: true,
       },
     ],
+
     'max-lines': ['error', 600],
     'max-lines-per-function': [
       'error',
@@ -274,6 +277,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
     'no-constructor-return': 'error',
+
     'no-continue': 'error',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-div-regex': 'error',
@@ -324,6 +328,7 @@ module.exports = {
     'no-new-func': 'error',
 
     'no-new-object': 'error',
+
     'no-new-require': 'error',
     'no-new-wrappers': 'error',
     'no-nonoctal-decimal-escape': 'error',
@@ -377,7 +382,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'never'],
     'one-var': ['error', 'never'],
     'operator-assignment': ['warn', 'always'],
-    'prefer-arrow-callback': 'warn',
+    'prefer-arrow-callback': 'off',
     'prefer-const': 'error',
     'prefer-destructuring': 'warn',
     'prefer-exponentiation-operator': 'warn',

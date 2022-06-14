@@ -9,4 +9,3 @@ if (container) {
 } else {
   console.error('there is no container element')
 }
-

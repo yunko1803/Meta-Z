@@ -31,9 +31,7 @@ export default defineConfig((configEnv) => {
             'react-dom': 'ReactDOM',
           },
         },
-        plugins: [
-          externals(),
-        ],
+        plugins: [externals()],
       },
     },
   }

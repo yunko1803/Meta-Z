@@ -29,19 +29,14 @@ export default defineConfig(() => {
       'process.env.NODE_ENV': JSON.stringify('import.meta.env.MODE'),
     },
     optimizeDeps: {
-      exclude: [
-        'vite',
-      ],
-      include: [
-      ],
+      exclude: ['vite'],
+      include: [],
     },
 
     plugins: [
       solid(),
       autoImport({
-        imports: [
-          'solid-js',
-        ],
+        imports: ['solid-js'],
       }),
       tsconfigPaths(),
       vitePluginImp(),

@@ -5,9 +5,7 @@ baseConfig.projects.push({
   maxWorkers: 1,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.e2e.ts'],
   testEnvironment: 'node',
-  testMatch: [
-    '<rootDir>/apps/*/src/**/__tests__/*.e2e.ts',
-  ],
+  testMatch: ['<rootDir>/apps/*/src/**/__tests__/*.e2e.ts'],
   testTimeout: 60_000,
   transformIgnorePatterns: ['/node_modules/'],
 })

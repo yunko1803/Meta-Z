@@ -1,11 +1,7 @@
 import {FC} from 'react'
 
 export const Main: FC = () => {
-  return (
-    <>
-      hello
-    </>
-  )
+  return <>hello</>
 }
 
 export default Main
