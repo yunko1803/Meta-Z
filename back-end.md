@@ -2,7 +2,7 @@
 
 ## 저장소 설명
 
-- ./apps/nest-test : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요 
+- ./apps/nest-test : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요 또는
   - dev script `pnpm run --filter @foo-bar-project/nest-test dev`
   - build script `pnpm run --filter @foo-bar-project/nest-test build`
   - start script `pnpm run --filter @foo-bar-project/nest-test start`
@@ -11,6 +11,10 @@
   - build script `pnpm run --filter @foo-bar-project/express-test build`
   - start script `pnpm run --filter @foo-bar-project/express-test start`
 
+## env 설정
+
+- ./apps/nest-test/.env 생성 또는
+- ./apps/express-test/.env 생성
 
 ## 문제 내용
 
