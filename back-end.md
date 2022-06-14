@@ -32,6 +32,10 @@ e2e and unit test
 pnpm run test
 ```
 
+## 문의
+
+문제에 대한 질문은 언제든지 물어봐주세요 😘
+
 원하는 DATABASE 를 사용하세요 (로컬 환경)
 
 << [README.md](README.md)
