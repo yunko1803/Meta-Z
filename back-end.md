@@ -27,11 +27,11 @@
 스팩에 맞게 e2e 테스트를 작성하고 아래 명령어를 실행하여 e2e 테스트를 통과 하여야 합니다.
 unit 테스트도 한다면 더욱 좋습니다
 
-원하는 DATABASE 를 사용하세요 (로컬 환경)
-
-- e2e and unit test
+e2e and unit test
 ```shell
 pnpm run test
 ```
+
+원하는 DATABASE 를 사용하세요 (로컬 환경)
 
 << [README.md](README.md)
