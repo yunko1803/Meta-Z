@@ -43,8 +43,8 @@
 
 미리 설치된 컴포넌트 세트 라이브러리
 
-- React : [chakra-ui](https://chakra-ui.com/), [emotion](https://emotion.sh/docs/introduction)
-- Vue :  [headless-ui](https://headlessui.dev/) , [tailwind](https://tailwindcss.com/)
-- SolidJs : [hope-ui](https://hope-ui.com/), [stitches](https://stitches.dev/)
+- React : [daisy-ui](https://daisyui.com/), [tailwind](https://tailwindcss.com/)
+- Vue :  [daisy-ui](https://daisyui.com/) , [tailwind](https://tailwindcss.com/)
+- SolidJs : [daisy-ui](https://daisyui.com/), [tailwind](https://tailwindcss.com/)
 
 << [README.md](README.md)

@@ -1,6 +1,6 @@
+import {Suspense} from 'react'
 import {BrowserRouter as Router, useRoutes} from 'react-router-dom'
 import {routes} from 'src/routes'
-import {ChakraProvider} from '@chakra-ui/react'
 
 const Routes = () => {
   return useRoutes(routes)
@@ -8,12 +8,14 @@ const Routes = () => {
 
 export const Root: FC = () => {
   return (
-    <ChakraProvider>
+    <>
       <span>root</span>
       <Router>
-        <Routes />
+        <Suspense>
+          <Routes />
+        </Suspense>
       </Router>
-    </ChakraProvider>
+    </>
   )
 }
 

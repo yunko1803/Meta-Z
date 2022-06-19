@@ -3,6 +3,7 @@ import {RouteObject} from 'react-router-dom'
 
 const MainLayout = lazy(() => import('layouts/main-layout/Index'))
 const Main = lazy(() => import('pages/Main'))
+const Sign = lazy(() => import('pages/Sign'))
 
 export const routes: RouteObject[] = [
   {
@@ -10,6 +11,10 @@ export const routes: RouteObject[] = [
       {
         element: <Main />,
         index: true,
+      },
+      {
+        element: <Sign />,
+        path: 'sign',
       },
     ],
     element: <MainLayout />,

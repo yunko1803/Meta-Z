@@ -1,5 +1,6 @@
 import {createRoot} from 'react-dom/client'
 import {Root} from './Root'
+import './index.css'
 
 const container = document.querySelector('#app')
 if (container) {
