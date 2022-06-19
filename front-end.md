@@ -22,7 +22,7 @@
 
 - 백엔드 주소 >
     - REST
-        - url: http://52.40.172.78:3000/rest
+        - url: http://54.188.193.175:3000/rest
           - (POST) /rest/auth/sign-in
             - req.body {email: '<string>', password: '<string>'} 
             - res 401 {email: '<string>'}
@@ -38,8 +38,8 @@
             - res 401 {email: '<string>'}
             - res 200 {email: '<string>'}
     - GraphQl
-        - url: http://52.40.172.78:3000/graphql
-        - playground: http://52.40.172.78:3000/graphql
+        - url: http://54.188.193.175:3000/graphql
+        - playground: http://54.188.193.175:3000/graphql
 
 미리 설치된 컴포넌트 세트 라이브러리
 
