@@ -26,6 +26,7 @@
           - (POST) /rest/auth/sign-in
             - req.body {email: '<string>', password: '<string>'} 
             - res 401 {email: '<string>'}
+            - res 404 {email: '<string>'}
             - res 200 {email: '<string>', name: '<string>', token: '<string>'}
           - (POST) /rest/auth/sign-up
             - req.body {email: '<string>', password: '<string>'}
