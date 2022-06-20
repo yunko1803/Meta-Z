@@ -11,7 +11,7 @@ export default defineConfig(() => {
     },
 
     optimizeDeps: {
-      // Vite does not work well with optionnal dependencies,
+      // Vite does not work well with optional dependencies,
       // mark them as ignored for now
       exclude: ['class-transformer', 'class-validator'],
     },
