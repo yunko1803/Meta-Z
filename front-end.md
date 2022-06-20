@@ -2,9 +2,9 @@
 
 ### 저장소 설명
 
-- ./apps/react-test : React 로 테스트를 수행하려면 이 폴더를 사용 하세요 (WIP)
-- ./apps/vue-test : Vue 로 테스트를 수행하려면 이 폴더를 사용 하세요 (WIP)
-- ./apps/solid-test : SolidJs 로 테스트를 수행하려면 이 폴더를 사용 하세요 (WIP)
+- ./apps/react-test : React 로 테스트를 수행하려면 이 폴더를 사용 하세요
+- ./apps/vue-test : Vue 로 테스트를 수행하려면 이 폴더를 사용 하세요
+- ./apps/solid-test : SolidJs 로 테스트를 수행하려면 이 폴더를 사용 하세요
 
 ### 문제 내용
 

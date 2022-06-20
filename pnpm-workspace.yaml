@@ -1,4 +1,4 @@
-pacakges:
+packages:
   - 'packages/**'
   - 'apps/**'
   - 'entities/**'

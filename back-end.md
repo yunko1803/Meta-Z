@@ -19,6 +19,10 @@ pnpm install
   - dev script `pnpm run --filter @foo-bar-project/express-test dev`
   - build script `pnpm run --filter @foo-bar-project/express-test build`
   - start script `pnpm run --filter @foo-bar-project/express-test start`
+- ./apps/type-graphql-test : type-graphql 로 테스트를 수행하려면 이 폴더를 사용 하세요
+  - dev script `pnpm run --filter @foo-bar-project/type-graphql-test dev`
+  - build script `pnpm run --filter @foo-bar-project/type-graphql-test build`
+  - start script `pnpm run --filter @foo-bar-project/type-graphql-test start`
 
 ## env 설정
 

@@ -87,20 +87,21 @@ module.exports = {
   root: true,
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/indent': [
-      'error',
-      2,
-      {
-        ObjectExpression: 'first',
-        SwitchCase: 1,
-        ignoredNodes: [
-          'TemplateLiteral *',
-          'FunctionExpression > .params[decorators.length > 0]',
-          'FunctionExpression > .params > :matches(Decorator, :not(:first-child))',
-          'ClassBody.body > PropertyDefinition[decorators.length > 0] > .key',
-        ],
-      },
-    ],
+    // '@typescript-eslint/indent': [
+    //   'error',
+    //   2,
+    //   {
+    //     ObjectExpression: 'first',
+    //     SwitchCase: 1,
+    //     ignoredNodes: [
+    //       'TemplateLiteral *',
+    //       'FunctionExpression > .params[decorators.length > 0]',
+    //       'FunctionExpression > .params > :matches(Decorator, :not(:first-child))',
+    //       'ClassBody.body > PropertyDefinition[decorators.length > 0] > .key',
+    //     ],
+    //   },
+    // ],
+    '@typescript-eslint/indent': 'off',
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {

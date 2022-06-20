@@ -1,6 +1,6 @@
-import React from 'react'
 import {createRoot} from 'react-dom/client'
 import {Root} from './Root'
+import React from 'react'
 
 const container = document.querySelector('#app')
 if (container) {
