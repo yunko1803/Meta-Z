@@ -1,5 +1,5 @@
 {
-  "name": "@projest-n/type-graphql-test",
+  "name": "@foo-bar-projest/type-graphql-test",
   "version": "1.0.0",
   "scripts": {
     "build": "vite build",
