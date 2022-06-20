@@ -3,8 +3,9 @@ import {ExpressContext} from 'apollo-server-express'
 import {createJwt, JwtContext} from './jwt'
 import {createRequestInfo, RequestInfoContext} from './request-info'
 
-export interface Context<User extends Record<string, any> = Record<string, any>,
-  > {
+export interface Context<
+  User extends Record<string, any> = Record<string, any>,
+> {
   jwt: JwtContext
   requestInfo: RequestInfoContext
   user?: User

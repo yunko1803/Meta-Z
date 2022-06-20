@@ -1,15 +1,13 @@
 /* eslint-disable import/no-named-as-default-member */
 import {ApolloServer} from 'apollo-server-express'
 import {ContextFunction} from 'apollo-server-core'
-import express, {Express} from 'express'
+import express from 'express'
 import {AuthChecker, buildSchema, PrintSchemaOptions} from 'type-graphql'
 import {Container} from 'typedi'
 
 export interface EmitSchemaFileOptions extends Partial<PrintSchemaOptions> {
   path?: string
 }
-
-export type App = Express
 
 export interface CreateAppOptions<Context> {
   authChecker?: AuthChecker<Context>
