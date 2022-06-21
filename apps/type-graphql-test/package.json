@@ -21,7 +21,8 @@
     "tslib": "^2.4.0",
     "type-graphql": "^1.1.1",
     "typedi": "^0.10.0",
-    "typeorm": "^0.3.6"
+    "typeorm": "^0.3.6",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@swc/core": "^1.2.203",
