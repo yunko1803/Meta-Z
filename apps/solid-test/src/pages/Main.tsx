@@ -1,5 +1,6 @@
 import {Button} from 'components/Button'
 import {NavLink} from 'solid-app-router'
+
 export const MainPage = () => {
   return (
     <div>

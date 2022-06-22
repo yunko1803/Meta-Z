@@ -10,11 +10,13 @@ const libraryName = kebabCase(packageJson.name)
 
 export default defineConfig((configEnv) => {
   const config = sharedConfig(configEnv)
+
   config.plugins?.push(
     dts({
       insertTypesEntry: true,
     }),
   )
+
   return {
     ...config,
     build: {

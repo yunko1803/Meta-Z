@@ -5,6 +5,7 @@ module.exports = {
     'plugin:unicorn/recommended',
     'plugin:import/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:solid/typescript',
     'eslint:recommended',
     '@vue/typescript/recommended',
     'prettier',
@@ -31,6 +32,20 @@ module.exports = {
         'max-classes-per-file': 'off',
         'unicorn/consistent-function-scoping': 'off',
         'unicorn/no-static-only-class': 'off',
+      },
+    },
+    // in vue tsx
+    {
+      files: ['apps/vue-test/**/*.tsx'],
+      rules: {
+        'solid/prefer-for': 'off',
+      },
+    },
+    // in react tsx
+    {
+      files: ['apps/react-test/**/*.tsx'],
+      rules: {
+        'solid/no-react-specific-props': 'off',
       },
     },
     {
@@ -83,10 +98,17 @@ module.exports = {
     sourceType: 'module',
     useJSXTextNode: true,
   },
-  plugins: ['prettier', 'import', 'sort-keys-fix', 'typescript-sort-keys'],
+  plugins: [
+    'prettier',
+    'import',
+    'sort-keys-fix',
+    'typescript-sort-keys',
+    'solid',
+  ],
   root: true,
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    // Owing to using prettier, It does not need to config
     // '@typescript-eslint/indent': [
     //   'error',
     //   2,
@@ -274,11 +296,8 @@ module.exports = {
     // typescript decoration error
     // 'new-cap': 'error',
     'no-confusing-arrow': 'warn',
-
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-
     'no-constructor-return': 'error',
-
     'no-continue': 'error',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-div-regex': 'error',
@@ -325,11 +344,8 @@ module.exports = {
     'no-negated-condition': 'error',
     // 'no-nested-ternary': 'error',
     'no-new': 'error',
-
     'no-new-func': 'error',
-
     'no-new-object': 'error',
-
     'no-new-require': 'error',
     'no-new-wrappers': 'error',
     'no-nonoctal-decimal-escape': 'error',
@@ -365,7 +381,7 @@ module.exports = {
     'no-useless-call': 'error',
     'no-useless-computed-key': 'error',
     'no-useless-concat': 'error',
-    'no-useless-constructor': 'warn',
+    'no-useless-constructor': 'off',
     'no-useless-rename': 'warn',
     'no-useless-return': 'error',
     'no-var': 'error',
@@ -402,6 +418,7 @@ module.exports = {
     'require-unicode-regexp': 'error',
     'rest-spread-spacing': 'error',
     semi: ['error', 'never'],
+    'solid/jsx-no-undef': 'off',
     'sort-imports': [
       'warn',
       {
@@ -456,6 +473,7 @@ module.exports = {
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-nested-ternary': 'off',
     'unicorn/no-null': 'off',
+    'unicorn/no-unsafe-regex': 'error',
     'unicorn/prefer-export-from': 'off',
     // 적용 할 수 있도록 해야한다
     'unicorn/prefer-module': 'off',

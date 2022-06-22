@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default-member */
 import {ApolloServer} from 'apollo-server-express'
 import {ContextFunction} from 'apollo-server-core'
-import express from 'express'
+import express, {Express} from 'express'
 import {AuthChecker, buildSchema, PrintSchemaOptions} from 'type-graphql'
 import {Container} from 'typedi'
 
@@ -18,7 +18,7 @@ export interface CreateAppOptions<Context> {
 
 export const createApp = async <Context>(
   options: CreateAppOptions<Context>,
-) => {
+): Promise<Express> => {
   const {authChecker, resolvers, context} = options
   const app = express()
 

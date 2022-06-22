@@ -1,3 +1,3 @@
-export const Button: FC = ({children}) => {
-  return <button className="btn">{children}</button>
+export const Button: FC = (props) => {
+  return <button className="btn">{props.children}</button>
 }

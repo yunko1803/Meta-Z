@@ -4,6 +4,7 @@ import {ConfigEnv, UserConfig} from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export type UserConfigFn = (env: ConfigEnv) => UserConfig
+
 export const sharedConfig: UserConfigFn = (): UserConfig => {
   return {
     define: {
