@@ -1,16 +1,41 @@
 # Front End Test
 
+## 시작하기
+
+### 디벤던시 설치
+프로젝트 루트에서 설치하세요
+```shell
+pnpm install
+```
+
 ### 저장소 설명
 
+(프로젝트 루트에서 실핼 하세요)
+
+각 모노레포 실행 방법은 Pnpm https://pnpm.io/ko/filtering#--filter-package_name 참조
+
 - ./apps/react-test : React 로 테스트를 수행하려면 이 폴더를 사용 하세요
+  - dev script `pnpm run --filter @foo-bar-project/react-test dev`
+  - build script `pnpm run --filter @foo-bar-project/react-test build`
+  - start script `pnpm run --filter @foo-bar-project/react-test start`
 - ./apps/vue-test : Vue 로 테스트를 수행하려면 이 폴더를 사용 하세요
+  - dev script `pnpm run --filter @foo-bar-project/vue-test dev`
+  - build script `pnpm run --filter @foo-bar-project/vue-test build`
+  - start script `pnpm run --filter @foo-bar-project/vue-test start`
 - ./apps/solid-test : SolidJs 로 테스트를 수행하려면 이 폴더를 사용 하세요
+  - dev script `pnpm run --filter @foo-bar-project/soild-test dev`
+  - build script `pnpm run --filter @foo-bar-project/soild-test build`
+  - start script `pnpm run --filter @foo-bar-project/soild-test start`
 
 ### 문제 내용
 
 로그인과 회원 가입 페이지를 아래 디자인 링크 내용대로 만듭니다 \
-이미 보일러플레이트가 작성 되어있습니다 작성된 보일러플레이를 이용하여 아래 스팩을 구현하세요 가적 보일러플레이트 코드 추가나 보일러플레이트에 오류가 있다면 해결 하셔도 좋습니다
+이미 보일러플레이트가 작성 되어있습니다 작성된 보일러플레이를 이용하여 아래 스팩을 구현하세요 보일러플레이트 코드 추가나 보일러플레이트에 오류가 있다면 해결 하셔도 좋습니다
 각 보일러플레이트 React, Vue, SolidJs 폴더에는 스타일링 방법과 컴포넌트 세트 라이브러리가 미리 설치되어 있습니다 원하시는 다른 방법으로 스타일링하며 컴포넌트를 작성 하셔도 됩니다 \
+
+### 꼭 지켜야 될 것
+- eslint 룰을 지키세요
+- type 오류가 없야 합니다
 
 #### 스팩
 

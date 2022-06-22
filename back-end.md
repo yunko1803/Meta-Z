@@ -2,14 +2,17 @@
 
 ## 시작하기
 
-디벤던시 설치 (프로젝트 루트에서 설치하세요)
+### 디벤던시 설치 
+프로젝트 루트에서 설치하세요
 ```shell
 pnpm install
 ```
 
 ## 저장소 설명
 
-(프로젝트 루트에서 시작 하세요)
+(프로젝트 루트에서 실핼 하세요)
+
+각 모노레포 실행 방법은 Pnpm https://pnpm.io/ko/filtering#--filter-package_name 참조
 
 - ./apps/nest-test : nest-api 로 테스트를 수행하려면 이 폴더를 사용 하세요 또는
   - dev script `pnpm run --filter @foo-bar-project/nest-test dev`

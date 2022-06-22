@@ -16,7 +16,7 @@ pnpm install
 - eslint 를 지키세요
 - type 오류가 없야 합니다
 
-## 프론트 문제 (WIP)
+## 프론트 문제
 
 Go To [/front-end.md](front-end.md)
 
