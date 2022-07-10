@@ -43,7 +43,7 @@ pnpm install
 
 화면 구현은 디자인 링크를 보고 구현해주세요 
 
-- 디자인 링크 > [Figma Link](https://www.figma.com/file/rRh6du4JPZclkiuBqLS6xX/Fornt-End-Test?node-id=0%3A1)
+- 디자인 링크 > [Figma Link](https://www.figma.com/file/rRh6du4JPZclkiuBqLS6xX/Fornt-End-Test?node-id=0%3A1)  (디자인은 반응형레이아웃 입니다)
 
 - 백엔드 주소 >
     - REST
