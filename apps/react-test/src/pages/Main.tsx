@@ -6,19 +6,19 @@ import {useCookies} from 'react-cookie'
 export const MainPage: FC = () => {
   const [cookies, setCookie] = useCookies(['user'])
   const isUserExist = Boolean(cookies.user)
-  console.log(isUserExist)
+  // console.log(isUserExist)
 
   // eslint-disable-next-line solid/components-return-once
   return (
     <div className="grid h-screen place-items-center">
-      {isUserExist && <div>안녕하세요</div>}
+      {isUserExist && <div>안녕하세요 {cookies.user.email} 님</div>}
       {renderButtonsBasedOnAuthentication()}
     </div>
   )
 
   function renderButtonsBasedOnAuthentication() {
     return isUserExist ? (
-      <div>
+      <div className="flex flex-col">
         <NavLink to="sign-out">
           <Button>Sign Out</Button>
         </NavLink>

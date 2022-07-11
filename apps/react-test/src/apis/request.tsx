@@ -14,10 +14,13 @@ export async function get<T>(
 ): Promise<T> {
   const result = await fetch(url, {
     ...options,
+    credentials: 'include',
     headers: {
       ...options.headers,
+      'Access-Control-Allow-Origin': '*',
     },
   })
+  console.log(result)
 
   return handleResult(result)
 }
