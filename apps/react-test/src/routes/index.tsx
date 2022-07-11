@@ -3,7 +3,9 @@ import {RouteObject} from 'react-router-dom'
 
 const MainLayout = lazy(() => import('layouts/main-layout/Index'))
 const Main = lazy(() => import('pages/Main'))
-const Sign = lazy(() => import('pages/Sign'))
+const SignUp = lazy(() => import('pages/SignUp'))
+const SignIn = lazy(() => import('pages/SignIn'))
+const UpdatePassword = lazy(() => import('pages/UpdatePassword'))
 
 export const routes: RouteObject[] = [
   {
@@ -13,8 +15,16 @@ export const routes: RouteObject[] = [
         index: true,
       },
       {
-        element: <Sign />,
-        path: 'sign',
+        element: <SignUp />,
+        path: 'sign-up',
+      },
+      {
+        element: <SignIn />,
+        path: 'sign-in',
+      },
+      {
+        element: <UpdatePassword />,
+        path: 'update-password',
       },
     ],
     element: <MainLayout />,
