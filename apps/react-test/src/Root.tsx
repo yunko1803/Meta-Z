@@ -11,7 +11,7 @@ export const Root: FC = () => {
     <>
       <span>root</span>
       <Router>
-        <Suspense>
+        <Suspense fallback={<h1>Loading...</h1>}>
           <Routes />
         </Suspense>
       </Router>
