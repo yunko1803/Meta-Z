@@ -2,10 +2,12 @@ import {FC} from 'react'
 import {Button} from 'components/Button'
 import {NavLink} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
+import {useNavigate} from 'react-router-dom'
 
 export const MainPage: FC = () => {
-  const [cookies, setCookie] = useCookies(['user'])
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
   const isUserExist = Boolean(cookies.user)
+  const navigate = useNavigate()
   // console.log(isUserExist)
 
   // eslint-disable-next-line solid/components-return-once
@@ -19,9 +21,7 @@ export const MainPage: FC = () => {
   function renderButtonsBasedOnAuthentication() {
     return isUserExist ? (
       <div className="flex flex-col">
-        <NavLink to="sign-out">
-          <Button>Sign Out</Button>
-        </NavLink>
+        <Button onClick={signOut}>Sign Out</Button>
         <NavLink to="update-password">
           <Button>Update Password</Button>
         </NavLink>
@@ -36,6 +36,11 @@ export const MainPage: FC = () => {
         </NavLink>
       </div>
     )
+  }
+
+  function signOut() {
+    removeCookie('user')
+    navigate('/')
   }
 }
 
