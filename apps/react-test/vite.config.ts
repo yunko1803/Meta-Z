@@ -87,7 +87,7 @@ export default defineConfig(() => {
         '/server': {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/server/u, ''),
-          target: 'http://35.89.152.14:3000',
+          target: process.env.API_URL,
         },
         '/static': {
           changeOrigin: true,

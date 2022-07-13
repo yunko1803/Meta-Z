@@ -43,14 +43,15 @@ export const SignInForm: FC = (props) => {
     // }
     const requestOptions = {
       body: JSON.stringify({email, password}),
-      credentials: 'include' as RequestCredentials,
       headers: {
-        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       },
       method: 'POST',
     }
-    const rep = await fetch('/server/rest/auth/sign-in', requestOptions)
+    const rep = await fetch(
+      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-in',
+      requestOptions,
+    )
     if (!rep.ok) {
       setErrorMsg('서버에 문제가 생긴것 같습니다')
       return
