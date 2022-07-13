@@ -3,6 +3,7 @@ import {Button} from 'components/Button'
 import {Input} from 'components/Input'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
+import {Spacer} from './Spacer'
 
 export const UpdatePasswordForm: FC = (props) => {
   const [password, setPassword] = useState('')
@@ -21,24 +22,29 @@ export const UpdatePasswordForm: FC = (props) => {
         value={password}
         handleChange={setPassword}
       />
-      <div>기존 패스워드를 입력하세요</div>
+      <div className="self-start pl-4 pt-1">기존 패스워드를 입력하세요</div>
+      <Spacer space={10} />
       <Input
         placeholder="New password"
         type="text"
         value={newPassword}
         handleChange={setNewPassword}
       />
-      <div>
+      <div className="self-start pl-4 pt-1">
         6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를
         입력하세요
       </div>
+      <Spacer space={10} />
       <Input
         placeholder="New password again"
         type="text"
         value={confirmedNewPassword}
         handleChange={setConfirmedNewPassword}
       />
-      <div>다시한번 패스워드를 입력해주세요</div>
+      <div className="self-start pl-4 pt-1">
+        다시한번 패스워드를 입력해주세요
+      </div>
+      <Spacer space={10} />
       <Button>update password</Button>
     </form>
   )

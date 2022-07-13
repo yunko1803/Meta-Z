@@ -1,8 +1,9 @@
 import {FC} from 'react'
-import {Button} from 'components/Button'
 import {NavLink} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
+import {Button} from 'components/Button'
+import {Spacer} from 'components/Spacer'
 
 export const MainPage: FC = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
@@ -31,6 +32,7 @@ export const MainPage: FC = () => {
         <NavLink to="sign-in">
           <Button>Sign In</Button>
         </NavLink>
+        <Spacer space={10} />
         <NavLink to="sign-up">
           <Button>Sign Up</Button>
         </NavLink>

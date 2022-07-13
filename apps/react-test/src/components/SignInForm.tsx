@@ -3,6 +3,7 @@ import {Button} from 'components/Button'
 import {Input} from 'components/Input'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
+import {Spacer} from './Spacer'
 
 export const SignInForm: FC = (props) => {
   const [email, setEmail] = useState('')
@@ -20,17 +21,19 @@ export const SignInForm: FC = (props) => {
         value={email}
         handleChange={setEmail}
       />
-      <div>이메일을 입력하세요</div>
+      <div className="self-start pl-4 pt-1">이메일을 입력하세요</div>
+      <Spacer space={10} />
       <Input
         placeholder="Password"
         type="text"
         value={password}
         handleChange={setPassword}
       />
-      <div>
+      <div className="self-start pl-4 pt-1">
         6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를
         입력하세요
       </div>
+      <Spacer space={10} />
       <Button>Sign In</Button>
     </form>
   )
