@@ -29,25 +29,32 @@ export const SignInForm: FC<Props> = (props) => {
 
   // eslint-disable-next-line solid/components-return-once
   return (
-    <form className="flex flex-col items-center p-10" onSubmit={onSubmit}>
-      <Input
-        placeholder="Email"
-        type="text"
-        value={email}
-        handleChange={handleEmail}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        {emailMsg}
+    <form
+      className="flex flex-col items-center p-10 mobile:pt-28"
+      onSubmit={onSubmit}
+    >
+      <div className="w-80">
+        <Input
+          placeholder="Email"
+          type="text"
+          value={email}
+          handleChange={handleEmail}
+        />
+        <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+          {emailMsg}
+        </div>
       </div>
       <Spacer space={10} />
-      <Input
-        placeholder="Password"
-        type="text"
-        value={password}
-        handleChange={handlePassword}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        {passwordMsg}
+      <div className="w-80">
+        <Input
+          placeholder="Password"
+          type="text"
+          value={password}
+          handleChange={handlePassword}
+        />
+        <p className="self-start pl-4 pt-1 text-gray-100 text-xs break-words">
+          {passwordMsg}
+        </p>
       </div>
       <Spacer space={10} />
       <Button disable={isBtnDisable}>Sign In</Button>

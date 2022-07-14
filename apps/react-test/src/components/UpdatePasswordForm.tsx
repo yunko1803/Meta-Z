@@ -27,34 +27,40 @@ export const UpdatePasswordForm: FC<Props> = (props) => {
   // eslint-disable-next-line solid/components-return-once
   return (
     <form className="flex flex-col items-center p-10" onSubmit={onSubmit}>
-      <Input
-        placeholder="Password"
-        type="text"
-        value={password}
-        handleChange={handlePassword}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        {passwordMsg}
+      <div className="w-80">
+        <Input
+          placeholder="Password"
+          type="text"
+          value={password}
+          handleChange={handlePassword}
+        />
+        <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+          {passwordMsg}
+        </div>
       </div>
       <Spacer space={10} />
-      <Input
-        placeholder="New password"
-        type="text"
-        value={newPassword}
-        handleChange={handleNewPassword}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        {newPasswordMsg}
+      <div className="w-80">
+        <Input
+          placeholder="New password"
+          type="text"
+          value={newPassword}
+          handleChange={handleNewPassword}
+        />
+        <p className="self-start pl-4 pt-1 text-gray-100 text-xs break-words">
+          {newPasswordMsg}
+        </p>
       </div>
       <Spacer space={10} />
-      <Input
-        placeholder="New password again"
-        type="text"
-        value={confirmedNewPassword}
-        handleChange={handleConfirmedNewPassword}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        다시한번 패스워드를 입력해주세요
+      <div className="w-80">
+        <Input
+          placeholder="New password again"
+          type="text"
+          value={confirmedNewPassword}
+          handleChange={handleConfirmedNewPassword}
+        />
+        <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+          다시한번 패스워드를 입력해주세요
+        </div>
       </div>
       <Spacer space={10} />
       <Button disable={isBtnDisable}>update password</Button>

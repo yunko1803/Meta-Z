@@ -31,34 +31,40 @@ export const SignUpForm: FC<Props> = (props) => {
   // eslint-disable-next-line solid/components-return-once
   return (
     <form className="flex flex-col items-center p-10" onSubmit={onSubmit}>
-      <Input
-        placeholder="Email"
-        type="text"
-        value={email}
-        handleChange={handleEmail}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        {emailMsg}
+      <div className="w-80">
+        <Input
+          placeholder="Email"
+          type="text"
+          value={email}
+          handleChange={handleEmail}
+        />
+        <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+          {emailMsg}
+        </div>
       </div>
       <Spacer space={10} />
-      <Input
-        placeholder="Password"
-        type="text"
-        value={password}
-        handleChange={handlePassword}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        {passwordMsg}
+      <div className="w-80">
+        <Input
+          placeholder="Password"
+          type="text"
+          value={password}
+          handleChange={handlePassword}
+        />
+        <p className="self-start pl-4 pt-1 text-gray-100 text-xs break-words">
+          {passwordMsg}
+        </p>
       </div>
       <Spacer space={10} />
-      <Input
-        placeholder="Write your password again"
-        type="text"
-        value={confirmedPassword}
-        handleChange={handleConfirmedPassword}
-      />
-      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        확인을 위해 한번더 입력해 주세요
+      <div className="w-80">
+        <Input
+          placeholder="Write your password again"
+          type="text"
+          value={confirmedPassword}
+          handleChange={handleConfirmedPassword}
+        />
+        <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+          확인을 위해 한번더 입력해 주세요
+        </div>
       </div>
       <Spacer space={10} />
       <Button disable={isBtnDisable}>Sign Up</Button>
