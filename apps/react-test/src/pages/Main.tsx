@@ -1,7 +1,6 @@
 import {FC} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
-import {useNavigate} from 'react-router-dom'
 import {Button} from 'components/Button'
 import {Spacer} from 'components/Spacer'
 
@@ -9,7 +8,6 @@ export const MainPage: FC = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
   const isUserExist = Boolean(cookies.user)
   const navigate = useNavigate()
-  // console.log(isUserExist)
 
   // eslint-disable-next-line solid/components-return-once
   return (

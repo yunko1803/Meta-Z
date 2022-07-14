@@ -1,11 +1,14 @@
-import {useState} from 'react'
 import {Button} from 'components/Button'
 import {Input} from 'components/Input'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import {Spacer} from './Spacer'
 
-export const SignInForm: FC = (props) => {
+type Props = {
+  onClickLoading: (bool: boolean) => void
+}
+
+export const SignInForm: FC<Props> = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
@@ -21,7 +24,9 @@ export const SignInForm: FC = (props) => {
         value={email}
         handleChange={setEmail}
       />
-      <div className="self-start pl-4 pt-1">이메일을 입력하세요</div>
+      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+        이메일을 입력하세요
+      </div>
       <Spacer space={10} />
       <Input
         placeholder="Password"
@@ -29,7 +34,7 @@ export const SignInForm: FC = (props) => {
         value={password}
         handleChange={setPassword}
       />
-      <div className="self-start pl-4 pt-1">
+      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
         6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를
         입력하세요
       </div>
@@ -40,6 +45,7 @@ export const SignInForm: FC = (props) => {
 
   async function onSubmit(event) {
     event.preventDefault()
+    props.onClickLoading(true)
     // if (password !== confirmedPassword) {
     //   setErrorMsg('입력한 패스워드가 일치하지 않습니다')
     //   return
@@ -55,6 +61,7 @@ export const SignInForm: FC = (props) => {
       'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-in',
       requestOptions,
     )
+    props.onClickLoading(false)
     if (!rep.ok) {
       setErrorMsg('서버에 문제가 생긴것 같습니다')
       return

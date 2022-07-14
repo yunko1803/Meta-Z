@@ -4,7 +4,7 @@ module.exports = {
   plugins: [require('daisyui')],
   theme: {
     colors: {
-      blue: '#1A1A1A',
+      black: '#1A1A1A',
       disable: '#D6D4D4',
       gray: {
         100: '#666666',
@@ -12,6 +12,7 @@ module.exports = {
         300: '#F2F2F2',
       },
       white: '#FFFFFF',
+      ghost: 'rgba(0, 0, 0, .14)',
     },
     fontFamily: {
       custom: ['Balsamiq Sans', 'cursive'],

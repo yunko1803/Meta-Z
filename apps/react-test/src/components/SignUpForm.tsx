@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {Button} from 'components/Button'
 import {Input} from 'components/Input'
 import {useCookies} from 'react-cookie'
@@ -22,7 +21,9 @@ export const SignUpForm: FC = (props) => {
         value={email}
         handleChange={setEmail}
       />
-      <div className="self-start pl-4 pt-1">이메일을 입력하세요</div>
+      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
+        이메일을 입력하세요
+      </div>
       <Spacer space={10} />
       <Input
         placeholder="Password"
@@ -30,7 +31,7 @@ export const SignUpForm: FC = (props) => {
         value={password}
         handleChange={setPassword}
       />
-      <div className="self-start pl-4 pt-1">
+      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
         6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를
         입력하세요
       </div>
@@ -41,7 +42,7 @@ export const SignUpForm: FC = (props) => {
         value={confirmedPassword}
         handleChange={setConfirmedPassword}
       />
-      <div className="self-start pl-4 pt-1">
+      <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
         확인을 위해 한번더 입력해 주세요
       </div>
       <Spacer space={10} />
