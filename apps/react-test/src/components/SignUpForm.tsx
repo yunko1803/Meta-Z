@@ -3,14 +3,30 @@ import {Input} from 'components/Input'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import {Spacer} from './Spacer'
+import {
+  generateEmailMsg,
+  generatePasswordMsg,
+  isEmailValid,
+  isPasswordValid,
+} from '../utils/functions'
+import {serverErrors} from 'src/utils/constants'
 
-export const SignUpForm: FC = (props) => {
+type Props = {
+  addErrMessage: (err: string) => void
+  onClickLoading: (bool: boolean) => void
+}
+
+export const SignUpForm: FC<Props> = (props) => {
   const [email, setEmail] = useState('')
+  const [emailMsg, setEmailMsg] = useState('이메일을 입력하세요')
   const [password, setPassword] = useState('')
+  const [passwordMsg, setPasswordMsg] = useState(
+    '6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를 입력하세요',
+  )
   const [confirmedPassword, setConfirmedPassword] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
-  const [cookies, setCookie] = useCookies(['user'])
+  const [, setCookie] = useCookies(['user'])
   const navigate = useNavigate()
+  const isBtnDisable = !isEmailValid(email) || !isPasswordValid(password)
 
   // eslint-disable-next-line solid/components-return-once
   return (
@@ -19,41 +35,54 @@ export const SignUpForm: FC = (props) => {
         placeholder="Email"
         type="text"
         value={email}
-        handleChange={setEmail}
+        handleChange={handleEmail}
       />
       <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        이메일을 입력하세요
+        {emailMsg}
       </div>
       <Spacer space={10} />
       <Input
         placeholder="Password"
         type="text"
         value={password}
-        handleChange={setPassword}
+        handleChange={handlePassword}
       />
       <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를
-        입력하세요
+        {passwordMsg}
       </div>
       <Spacer space={10} />
       <Input
         placeholder="Write your password again"
         type="text"
         value={confirmedPassword}
-        handleChange={setConfirmedPassword}
+        handleChange={handleConfirmedPassword}
       />
       <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
         확인을 위해 한번더 입력해 주세요
       </div>
       <Spacer space={10} />
-      <Button>Sign Up</Button>
+      <Button disable={isBtnDisable}>Sign Up</Button>
     </form>
   )
+
+  function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value)
+    setEmailMsg(generateEmailMsg(event.target.value))
+  }
+
+  function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value)
+    setPasswordMsg(generatePasswordMsg(event.target.value))
+  }
+
+  function handleConfirmedPassword(event: React.ChangeEvent<HTMLInputElement>) {
+    setConfirmedPassword(event.target.value)
+  }
 
   async function onSubmit(event) {
     event.preventDefault()
     if (password !== confirmedPassword) {
-      setErrorMsg('입력한 패스워드가 일치하지 않습니다')
+      props.addErrMessage('입력한 패스워드가 일치하지 않습니다')
       return
     }
     const requestOptions = {
@@ -63,12 +92,14 @@ export const SignUpForm: FC = (props) => {
       },
       method: 'POST',
     }
+    props.onClickLoading(true)
     const rep = await fetch(
       'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-up',
       requestOptions,
     )
+    props.onClickLoading(false)
     if (!rep.ok) {
-      setErrorMsg('서버에 문제가 생긴것 같습니다')
+      props.addErrMessage(serverErrors[rep.status])
       return
     }
     const data = await rep.json()

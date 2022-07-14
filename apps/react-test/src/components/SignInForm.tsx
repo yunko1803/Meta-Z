@@ -3,17 +3,29 @@ import {Input} from 'components/Input'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import {Spacer} from './Spacer'
+import {
+  generateEmailMsg,
+  generatePasswordMsg,
+  isEmailValid,
+  isPasswordValid,
+} from '../utils/functions'
+import {serverErrors} from '../utils/constants'
 
 type Props = {
+  addErrMessage: (err: string) => void
   onClickLoading: (bool: boolean) => void
 }
 
 export const SignInForm: FC<Props> = (props) => {
   const [email, setEmail] = useState('')
+  const [emailMsg, setEmailMsg] = useState('이메일을 입력하세요')
   const [password, setPassword] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
-  const [cookies, setCookie] = useCookies(['user'])
+  const [passwordMsg, setPasswordMsg] = useState(
+    '6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를 입력하세요',
+  )
+  const [, setCookie] = useCookies(['user'])
   const navigate = useNavigate()
+  const isBtnDisable = !isEmailValid(email) || !isPasswordValid(password)
 
   // eslint-disable-next-line solid/components-return-once
   return (
@@ -22,34 +34,38 @@ export const SignInForm: FC<Props> = (props) => {
         placeholder="Email"
         type="text"
         value={email}
-        handleChange={setEmail}
+        handleChange={handleEmail}
       />
       <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        이메일을 입력하세요
+        {emailMsg}
       </div>
       <Spacer space={10} />
       <Input
         placeholder="Password"
         type="text"
         value={password}
-        handleChange={setPassword}
+        handleChange={handlePassword}
       />
       <div className="self-start pl-4 pt-1 text-gray-100 text-xs">
-        6 글자이상 1개 이상 기호 포함 대소문자 숫자 1개 이상 포함 패스워드를
-        입력하세요
+        {passwordMsg}
       </div>
       <Spacer space={10} />
-      <Button>Sign In</Button>
+      <Button disable={isBtnDisable}>Sign In</Button>
     </form>
   )
 
-  async function onSubmit(event) {
+  function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value)
+    setEmailMsg(generateEmailMsg(event.target.value))
+  }
+
+  function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value)
+    setPasswordMsg(generatePasswordMsg(event.target.value))
+  }
+
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    props.onClickLoading(true)
-    // if (password !== confirmedPassword) {
-    //   setErrorMsg('입력한 패스워드가 일치하지 않습니다')
-    //   return
-    // }
     const requestOptions = {
       body: JSON.stringify({email, password}),
       headers: {
@@ -57,13 +73,14 @@ export const SignInForm: FC<Props> = (props) => {
       },
       method: 'POST',
     }
+    props.onClickLoading(true)
     const rep = await fetch(
       'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-in',
       requestOptions,
     )
     props.onClickLoading(false)
     if (!rep.ok) {
-      setErrorMsg('서버에 문제가 생긴것 같습니다')
+      props.addErrMessage(serverErrors[rep.status])
       return
     }
     const data = await rep.json()

@@ -46,6 +46,7 @@ module.exports = {
       files: ['apps/react-test/**/*.tsx'],
       rules: {
         'solid/no-react-specific-props': 'off',
+        'solid/prefer-for': 'off',
       },
     },
     {

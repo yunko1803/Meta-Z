@@ -1,8 +1,8 @@
 type Props = {
+  handleChange: (event) => void
   placeholder: string
   type: string
   value: string
-  handleChange: (value: string) => void
 }
 
 export const Input: FC<Props> = (props) => {
@@ -13,7 +13,8 @@ export const Input: FC<Props> = (props) => {
       type={props.type}
       placeholder={props.placeholder}
       value={props.value}
-      onChange={(event) => props.handleChange(event.target.value)}
+      // eslint-disable-next-line solid/reactivity
+      onChange={props.handleChange}
     />
   )
 }
