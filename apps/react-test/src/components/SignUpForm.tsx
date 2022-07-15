@@ -28,7 +28,56 @@ export const SignUpForm: FC<Props> = (props) => {
   const navigate = useNavigate()
   const isBtnDisable = !isEmailValid(email) || !isPasswordValid(password)
 
-  // eslint-disable-next-line solid/components-return-once
+  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+    setEmailMsg(generateEmailMsg(event.target.value))
+  }
+
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+    setPasswordMsg(generatePasswordMsg(event.target.value))
+  }
+
+  const handleConfirmedPassword = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setConfirmedPassword(event.target.value)
+  }
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (password !== confirmedPassword) {
+      props.addErrMessage('입력한 패스워드가 일치하지 않습니다')
+      return
+    }
+    const requestOptions = {
+      body: JSON.stringify({email, password}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    }
+    props.onClickLoading(true)
+    const rep = await fetch(
+      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-up',
+      requestOptions,
+    )
+    props.onClickLoading(false)
+    if (!rep.ok) {
+      props.addErrMessage(serverErrors[rep.status])
+      return
+    }
+    const data = await rep.json()
+    const userData = {
+      email: data.email,
+      token: data.token,
+    }
+    setCookie('user', userData, {
+      path: '/',
+    })
+    navigate('/')
+  }
+
   return (
     <form className="flex flex-col items-center p-10" onSubmit={onSubmit}>
       <div className="w-80">
@@ -70,54 +119,4 @@ export const SignUpForm: FC<Props> = (props) => {
       <Button disable={isBtnDisable}>Sign Up</Button>
     </form>
   )
-
-  function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value)
-    setEmailMsg(generateEmailMsg(event.target.value))
-  }
-
-  function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value)
-    setPasswordMsg(generatePasswordMsg(event.target.value))
-  }
-
-  function handleConfirmedPassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setConfirmedPassword(event.target.value)
-  }
-
-  async function onSubmit(event) {
-    event.preventDefault()
-    if (password !== confirmedPassword) {
-      props.addErrMessage('입력한 패스워드가 일치하지 않습니다')
-      return
-    }
-    const requestOptions = {
-      body: JSON.stringify({email, password}),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    }
-    props.onClickLoading(true)
-    const rep = await fetch(
-      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-up',
-      requestOptions,
-    )
-    props.onClickLoading(false)
-    if (!rep.ok) {
-      props.addErrMessage(serverErrors[rep.status])
-      return
-    }
-    const data = await rep.json()
-    const userData = {
-      email: data.email,
-      token: data.token,
-    }
-
-    setCookie('user', userData, {
-      path: '/',
-    })
-
-    navigate('/')
-  }
 }

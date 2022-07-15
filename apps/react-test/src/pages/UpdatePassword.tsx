@@ -4,6 +4,7 @@ import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import {Button} from 'src/components/Button'
 import {Loading} from 'src/components/Loading'
+import {ToastContainer} from 'src/containers/ToastContainer'
 import {DELAY, ONE, THREE, TWO, ZERO} from '../utils/constants'
 
 export const UpdatePassword: FPC = () => {
@@ -17,16 +18,13 @@ export const UpdatePassword: FPC = () => {
     const timer = setTimeout(() => {
       switch (errAry.length) {
         case THREE:
-          // eslint-disable-next-line max-nested-callbacks
-          setErrAry((errAry) => errAry.filter((_, index) => index !== TWO))
+          setErrAry(filterArray(errAry, TWO))
           break
         case TWO:
-          // eslint-disable-next-line max-nested-callbacks
-          setErrAry((errAry) => errAry.filter((_, index) => index !== ONE))
+          setErrAry(filterArray(errAry, ONE))
           break
         case ONE:
-          // eslint-disable-next-line max-nested-callbacks
-          setErrAry((errAry) => errAry.filter((_, index) => index !== ZERO))
+          setErrAry(filterArray(errAry, ZERO))
           break
       }
     }, DELAY)
@@ -34,12 +32,24 @@ export const UpdatePassword: FPC = () => {
     return () => clearTimeout(timer)
   }, [errAry])
 
-  // eslint-disable-next-line solid/components-return-once
+  const filterArray = (ary, selectedIndex) =>
+    ary.filter((_, index) => index !== selectedIndex)
+
+  const addErrMessage = (err: string) => {
+    const newErrAry = [err, ...errAry]
+    if (newErrAry.length > THREE) {
+      setErrAry(newErrAry.slice(ZERO, THREE))
+      return
+    }
+    setErrAry(newErrAry)
+  }
+
   return (
     <>
       {isUserExist ? (
         <div className="flex flex-col h-screen">
           {isLoading && <Loading />}
+          <ToastContainer msgAry={errAry} />
           <Header />
           <UpdatePasswordForm
             onClickLoading={setIsLoading}
@@ -56,15 +66,6 @@ export const UpdatePassword: FPC = () => {
       )}
     </>
   )
-
-  function addErrMessage(err: string) {
-    const newErrAry = [err, ...errAry]
-    if (newErrAry.length > THREE) {
-      setErrAry(newErrAry.slice(ZERO, THREE))
-      return
-    }
-    setErrAry(newErrAry)
-  }
 }
 
 export default UpdatePassword

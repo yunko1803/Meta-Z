@@ -22,9 +22,53 @@ export const UpdatePasswordForm: FC<Props> = (props) => {
   const [cookies] = useCookies(['user'])
   const navigate = useNavigate()
   const isBtnDisable =
-    !isPasswordValid(password) || !isPasswordValid(newPassword)
+    !isPasswordValid(password) ||
+    !isPasswordValid(newPassword) ||
+    confirmedNewPassword === ''
 
-  // eslint-disable-next-line solid/components-return-once
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+    setPasswordMsg(generatePasswordMsg(event.target.value))
+  }
+
+  const handleNewPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPassword(event.target.value)
+    setNewPasswordMsg(generatePasswordMsg(event.target.value))
+  }
+
+  const handleConfirmedNewPassword = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setConfirmedNewPassword(event.target.value)
+  }
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (newPassword !== confirmedNewPassword) {
+      props.addErrMessage('입력한 패스워드가 일치하지 않습니다')
+      return
+    }
+    const requestOptions = {
+      body: JSON.stringify({newPassword, password}),
+      headers: {
+        Authorization: `Bearer ${cookies.user.token}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'PATCH',
+    }
+    props.onClickLoading(true)
+    const rep = await fetch(
+      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/update-password',
+      requestOptions,
+    )
+    props.onClickLoading(false)
+    if (!rep.ok) {
+      props.addErrMessage(serverErrors[rep.status])
+      return
+    }
+    navigate('/')
+  }
+
   return (
     <form className="flex flex-col items-center p-10" onSubmit={onSubmit}>
       <div className="w-80">
@@ -66,45 +110,4 @@ export const UpdatePasswordForm: FC<Props> = (props) => {
       <Button disable={isBtnDisable}>update password</Button>
     </form>
   )
-
-  function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value)
-    setPasswordMsg(generatePasswordMsg(event.target.value))
-  }
-
-  function handleNewPassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewPassword(event.target.value)
-    setNewPasswordMsg(generatePasswordMsg(event.target.value))
-  }
-
-  function handleConfirmedNewPassword(
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) {
-    setConfirmedNewPassword(event.target.value)
-  }
-
-  async function onSubmit(event) {
-    event.preventDefault()
-    if (newPassword !== confirmedNewPassword) {
-      props.addErrMessage('입력한 패스워드가 일치하지 않습니다')
-      return
-    }
-    const requestOptions = {
-      body: JSON.stringify({newPassword, password}),
-      headers: {
-        Authorization: `Bearer ${cookies.user.token}`,
-        'Content-Type': 'application/json',
-      },
-      method: 'PATCH',
-    }
-    const rep = await fetch(
-      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/update-password',
-      requestOptions,
-    )
-    if (!rep.ok) {
-      props.addErrMessage(serverErrors[rep.status])
-      return
-    }
-    navigate('/')
-  }
 }

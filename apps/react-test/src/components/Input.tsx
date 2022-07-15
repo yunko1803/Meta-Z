@@ -6,15 +6,18 @@ type Props = {
 }
 
 export const Input: FC<Props> = (props) => {
+  const inputStyle =
+    'w-80 h-12 border border-slate-300 border-gray-200 rounded text-gray-700 placeholder:text-gray-100 pl-[14px]'
+  const onChangeEvent = (event: React.ChangeEvent<HTMLInputElement>) =>
+    props.handleChange(event)
+
   return (
     <input
-      // eslint-disable-next-line max-len
-      className="w-80 h-12 border border-slate-300 border-gray-200 rounded text-gray-700 placeholder:text-gray-100 pl-[14px] "
+      className={inputStyle}
       type={props.type}
       placeholder={props.placeholder}
       value={props.value}
-      // eslint-disable-next-line solid/reactivity
-      onChange={props.handleChange}
+      onChange={onChangeEvent}
     />
   )
 }

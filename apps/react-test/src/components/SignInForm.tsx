@@ -27,7 +27,46 @@ export const SignInForm: FC<Props> = (props) => {
   const navigate = useNavigate()
   const isBtnDisable = !isEmailValid(email) || !isPasswordValid(password)
 
-  // eslint-disable-next-line solid/components-return-once
+  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+    setEmailMsg(generateEmailMsg(event.target.value))
+  }
+
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+    setPasswordMsg(generatePasswordMsg(event.target.value))
+  }
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const requestOptions = {
+      body: JSON.stringify({email, password}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    }
+    props.onClickLoading(true)
+    const rep = await fetch(
+      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-in',
+      requestOptions,
+    )
+    props.onClickLoading(false)
+    if (!rep.ok) {
+      props.addErrMessage(serverErrors[rep.status])
+      return
+    }
+    const data = await rep.json()
+    const userData = {
+      email: data.email,
+      token: data.token,
+    }
+    setCookie('user', userData, {
+      path: '/',
+    })
+    navigate('/')
+  }
+
   return (
     <form
       className="flex flex-col items-center p-10 mobile:pt-28"
@@ -60,44 +99,4 @@ export const SignInForm: FC<Props> = (props) => {
       <Button disable={isBtnDisable}>Sign In</Button>
     </form>
   )
-
-  function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value)
-    setEmailMsg(generateEmailMsg(event.target.value))
-  }
-
-  function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value)
-    setPasswordMsg(generatePasswordMsg(event.target.value))
-  }
-
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const requestOptions = {
-      body: JSON.stringify({email, password}),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    }
-    props.onClickLoading(true)
-    const rep = await fetch(
-      'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/sign-in',
-      requestOptions,
-    )
-    props.onClickLoading(false)
-    if (!rep.ok) {
-      props.addErrMessage(serverErrors[rep.status])
-      return
-    }
-    const data = await rep.json()
-    const userData = {
-      email: data.email,
-      token: data.token,
-    }
-    setCookie('user', userData, {
-      path: '/',
-    })
-    navigate('/')
-  }
 }

@@ -12,16 +12,13 @@ export const SignUp: FPC = () => {
     const timer = setTimeout(() => {
       switch (errAry.length) {
         case THREE:
-          // eslint-disable-next-line max-nested-callbacks
-          setErrAry((errAry) => errAry.filter((_, index) => index !== TWO))
+          setErrAry(filterArray(errAry, TWO))
           break
         case TWO:
-          // eslint-disable-next-line max-nested-callbacks
-          setErrAry((errAry) => errAry.filter((_, index) => index !== ONE))
+          setErrAry(filterArray(errAry, ONE))
           break
         case ONE:
-          // eslint-disable-next-line max-nested-callbacks
-          setErrAry((errAry) => errAry.filter((_, index) => index !== ZERO))
+          setErrAry(filterArray(errAry, ZERO))
           break
       }
     }, DELAY)
@@ -29,7 +26,18 @@ export const SignUp: FPC = () => {
     return () => clearTimeout(timer)
   }, [errAry])
 
-  // eslint-disable-next-line solid/components-return-once
+  const filterArray = (ary, selectedIndex) =>
+    ary.filter((_, index) => index !== selectedIndex)
+
+  const addErrMessage = (err: string) => {
+    const newErrAry = [err, ...errAry]
+    if (newErrAry.length > THREE) {
+      setErrAry(newErrAry.slice(ZERO, THREE))
+      return
+    }
+    setErrAry(newErrAry)
+  }
+
   return (
     <div className="flex flex-col h-screen">
       {isLoading && <Loading />}
@@ -38,15 +46,6 @@ export const SignUp: FPC = () => {
       <SignUpForm onClickLoading={setIsLoading} addErrMessage={addErrMessage} />
     </div>
   )
-
-  function addErrMessage(err: string) {
-    const newErrAry = [err, ...errAry]
-    if (newErrAry.length > THREE) {
-      setErrAry(newErrAry.slice(ZERO, THREE))
-      return
-    }
-    setErrAry(newErrAry)
-  }
 }
 
 export default SignUp

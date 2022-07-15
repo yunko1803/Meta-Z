@@ -1,4 +1,4 @@
-export const Header: FC = (props) => {
+export const Header: FC = () => {
   return (
     <div className="flex-grow w-full flex flex-col">
       <div className="bg-white flex-grow mobile:hidden" />

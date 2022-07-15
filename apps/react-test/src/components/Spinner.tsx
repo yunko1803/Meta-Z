@@ -1,4 +1,4 @@
-export const Spinner: FC = (props) => {
+export const Spinner: FC = () => {
   return (
     <svg
       role="status"
